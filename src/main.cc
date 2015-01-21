@@ -33,8 +33,9 @@ int main(int argc,char **argv)
 	cv::GaussianBlur(m2,m2,cv::Size(11,11),2,2);
 	cv::cvtColor(m2,m2,CV_BGR2GRAY);
 	std::vector<cv::Vec3f> circles;
-	cv::HoughCircles(m2,circles,CV_HOUGH_GRADIENT,1,100,20,50);
+	cv::HoughCircles(m2,circles,CV_HOUGH_GRADIENT,1,100,20,10,0,50);
 	if(!circles.size()){
+		std::cout << "No circles found." << std::endl;
 		return 0;
 	}
 	int max=circles.size();
